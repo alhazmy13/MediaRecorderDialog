@@ -26,6 +26,7 @@ import com.truizlop.fabreveallayout.OnRevealChangeListener;
 
 import net.alhazmy13.gota.Gota;
 import net.alhazmy13.gota.GotaResponse;
+import net.alhazmy13.library.R;
 
 import java.io.IOException;
 

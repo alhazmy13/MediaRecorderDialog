@@ -4,7 +4,7 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'MediaRecorderDialog'
 
-    publishedGroupId = 'net.alhazmy13.MediaPicker'
+    publishedGroupId = 'net.alhazmy13.MediaRecorderDialog'
     libraryName = 'libary'
 
     artifact = 'libary'
@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/alhzmy13/MediaRecorderDialog'
     gitUrl = 'https://github.com/alhzmy13/MediaRecorderDialog.git'
 
-    libraryVersion = '0.0.1-beta'
+    libraryVersion = '0.1.1-beta'
 
     developerId = 'alhazmy13'
     developerName = 'Abdullah Alhazmy'
@@ -44,7 +44,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.truizlop.fabreveallayout:library:1.0.0'
     compile 'com.wang.avi:library:1.0.1'
@@ -58,3 +57,5 @@ dependencies {
 
 
 }
+apply from: './bintrayv1.gradle'
+apply from: './installv1.gradle'
