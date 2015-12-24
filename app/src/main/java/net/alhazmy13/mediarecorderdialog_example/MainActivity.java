@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 new MediaRecorderDialog.Builder(MainActivity.this)
                         .setOutputFormat(MediaRecorderDialog.OutputFormat.MPEG_4)
                         .setAudioEncoder(MediaRecorderDialog.AudioEncoder.AAC)
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
                             }
                         })
                         .show();
+
+
+
             }
         });
 
