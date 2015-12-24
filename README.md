@@ -1,7 +1,11 @@
 # Media Recorder Dialog
 ------ 
-Media Picker is an Android Libary that lets you to select multiple images, video or voice for Android 4.1 (API 16) +.
+Android has a built in microphone through which you can capture audio and store it , or play it in your phone. There are many ways to do that but with this dialog you can do all thats with only one dialog.
+
 You can report any issue on issues page. **Note: If you speak Arabic, you can submit issues with Arabic language and I will check them. :)**
+
+![mediarecorderdialog](https://cloud.githubusercontent.com/assets/4659608/11994579/303214a0-aa52-11e5-9d91-0e88e6b4da4c.gif)
+
 
 
 ## Installation
@@ -29,102 +33,69 @@ dependencies {
 ```java
 
  new MediaRecorderDialog.Builder(MainActivity.this)
-                        .setOutputFormat(MediaRecorderDialog.OutputFormat.MPEG_4)
-                        .setAudioEncoder(MediaRecorderDialog.AudioEncoder.AAC)
-                        .setTitle("Recording,,,")
-                        .setMessage("Press the button")
-                        .setOnSaveButtonClickListener(new OnSaveButtonClickListener() {
-                            @Override
-                            public void onSucceed(String path) {
-                               // Toast.makeText(MainActivity.this,path,Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onFailure() {
-                                //Toast.makeText(MainActivity.this,"onFailure",Toast.LENGTH_SHORT).show();
-
-                            }
-                        })
-                        .show();
-
+    .setOutputFormat(MediaRecorderDialog.OutputFormat.MPEG_4)
+    .setAudioEncoder(MediaRecorderDialog.AudioEncoder.AAC)
+    .setTitle("Recording,,,")
+    .setMessage("Press the button")
+    .setOnSaveButtonClickListener(new OnSaveButtonClickListener() {
+        @Override
+        public void onSucceed(String path) {
+            // Toast.makeText(MainActivity.this,path,Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onFailure() {
+            //Toast.makeText(MainActivity.this,"Failure",Toast.LENGTH_SHORT).show();
+        }
+    })
+    .show();
 
 ```
 
-
-### Additional Options
-* `SetExtanion` You can change the extanion of image to `PNG` or `JPG`
+### Implement an `OnSaveButtonClickListener`
+In order to receive the path of file, you will need to implement the `OnSaveButtonClickListener` interfaces. 
 ```java
-imagePicker.setExtension(ImagePicker.PNG);
-```
-* `setCompressLevel` You can change the quality of image with three different levels `HARD`,`MEDIUM` or `SOFT`
-```java
-imagePicker.setCompressLevel(ImagePicker.MEDIUM);
-```
-
-* `setDirectory` You can pass the storage path, or You can select `ImagePicker.DEFAULT_DIR` to keep the default path.
-```java
-imagePicker.setDirectory(ImagePicker.DEFAULT_DIR);
-
-//OR
-
-imagePicker.setDirectory(Environment.getExternalStorageDirectory()+"/myFolder");
-
-```
------- 
-
-## Video
------- 
-After adding the library, you need to:
-
-1. Implement an `OnVideoSetListener`
-2. Create an object from `VideoPicker` 
-
-
-### Implement an `OnVideoSetListener`
-In order to receive the path of video, you will need to implement the `OnVideoSetListener`  interfaces. Typically this will  call camera activity and return the path of video.
-```java
- @Override
-    public void OnVideoSet(String path) {
-        
+    @Override
+    public void onSucceed(String path) {
+        //Your Code
+    }
+    @Override
+    public void onFailure() {
+        //Your Code
     }
 ```
 
-### Create a `VideoPicker`
-You will need to create a new instance of `VideoPicker`. Once the instance are configured, you can call `pick()`.
-```java
-        VideoPicker videoPicker=new VideoPicker(this);
-        videoPicker.setOnVideoSetListener(this);
-        videoPicker.pick();
-```
-
-
 ### Additional Options
-* `SetExtanion` You can change the extanion of video to `Mp4`,`3gp` or `mkv`
+* `setTitle` You can change the title of Dialog 
 ```java
-    videoPicker.setExtension(VideoPicker._MP4);
+.setTitle("Recording,,,")
 ```
-* `setDirectory` You can pass the storage path, or You can select `VideoPicker.DEFAULT_DIR` to keep the default path.
+* `setMessage` to change the message  
 ```java
-videoPicker.setDirectory(VideoPicker.DEFAULT_DIR);
-
-//OR
-
-videoPicker.setDirectory(Environment.getExternalStorageDirectory()+"/myFolder");
-
+.setMessage("Press the button")
 ```
-
-
-## Voice 
------- 
-**Comming Soon,,,**
-
-# Comming Fetaures
------- 
-* Resize, compress, filter and optimize image.
-* Pick/Select Image from Gallery.
-* Record video and voice.
-* etc...           
+* `setTitle` You can change the title of Dialog 
+```java
+.setTitle("Recording,,,")
 ```
+* `setOutputFormat` You can change the Output format by passing the format from  `MediaRecorderDialog.OutputFormat`
+```java
+.setOutputFormat(MediaRecorderDialog.OutputFormat.MPEG_4)
+```
+* `setAudioEncoder` You can change the  Encoder by passing the value from  `MediaRecorderDialog.AudioEncoder`
+```java
+.setAudioEncoder(MediaRecorderDialog.AudioEncoder.AAC)
+```
+### Theme and style
+You can theme the dialog by overwriting the color resources in your project.
+```xml
+    <color name="media_recorder_colorPrimary">#00796B</color>
+    <color name="media_recorder_background">#009688</color>
+    <color name="media_recorder_bar">#80CBC4</color>
+```
+### Credits 
+* [Gota Library](https://github.com/alhazmy13/Gota) 
+* [AndroidViewAnimations](https://github.com/daimajia/AndroidViewAnimations).
+* [Android Ripple Background Library](https://github.com/skyfishjy/android-ripple-background) 
 
 
 ## License
