@@ -26,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
                         .setOnSaveButtonClickListener(new OnSaveButtonClickListener() {
                             @Override
                             public void onSucceed(String path) {
-                                Toast.makeText(MainActivity.this,path,Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(MainActivity.this,path,Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure() {
-                                Toast.makeText(MainActivity.this,"onFailure",Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(MainActivity.this,"onFailure",Toast.LENGTH_SHORT).show();
 
                             }
                         })

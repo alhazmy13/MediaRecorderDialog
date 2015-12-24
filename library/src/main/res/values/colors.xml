@@ -3,8 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="media_recorder_background">#070a0f</color>
-    <color name="media_recorder_colorPrimary">#00bbda</color>
-    <color name="white">#ffffff</color>
+    <color name="media_recorder_colorPrimary">#00796B</color>
+    <color name="media_recorder_background">#009688</color>
     <color name="media_recorder_bar">#80CBC4</color>
+    <color name="white">#ffffff</color>
 </resources>

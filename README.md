@@ -1,4 +1,4 @@
-# Media Picker
+# Media Recorder Dialog
 ------ 
 Media Picker is an Android Libary that lets you to select multiple images, video or voice for Android 4.1 (API 16) +.
 You can report any issue on issues page. **Note: If you speak Arabic, you can submit issues with Arabic language and I will check them. :)**
@@ -9,9 +9,9 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 **Maven**
 ```xml
 <dependency>
-<groupId>net.alhazmy13.MediaPicker</groupId>
+<groupId>net.alhazmy13.MediaRecorderDialog</groupId>
 <artifactId>libary</artifactId>
-<version>1.1.1-beta</version>
+<version>0.1.1-beta</version>
 </dependency>
 ```
 
@@ -20,35 +20,34 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.MediaPicker:libary:1.1.1-beta'
+	compile 'net.alhazmy13.MediaRecorderDialog:libary:0.1.1-beta'
 }
 ```
 
 # Usage
 ------ 
-## Images
-After adding the library, you need to:
-
-1. Implement an `OnImageSetListener`
-2. Create an object from `ImagePicker` 
-
-
-### Implement an `OnImageSetListener`
-In order to receive the path of image, you will need to implement the `OnImageSetListener`  interfaces. Typically this will  call camera activity and return the path of image.
 ```java
-  @Override
-    public void onImageSet(String path) {
-       //imageView.setImageBitmap(BitmapFactory.decodeFile(path));
 
-    }
-```
+ new MediaRecorderDialog.Builder(MainActivity.this)
+                        .setOutputFormat(MediaRecorderDialog.OutputFormat.MPEG_4)
+                        .setAudioEncoder(MediaRecorderDialog.AudioEncoder.AAC)
+                        .setTitle("Recording,,,")
+                        .setMessage("Press the button")
+                        .setOnSaveButtonClickListener(new OnSaveButtonClickListener() {
+                            @Override
+                            public void onSucceed(String path) {
+                               // Toast.makeText(MainActivity.this,path,Toast.LENGTH_SHORT).show();
+                            }
 
-### Create an `ImagePicker`
-You will need to create a new instance of `ImagePicker`. Once the instance are configured, you can call `pick()`.
-```java
-         ImagePicker imagePicker=new ImagePicker(this);
-        imagePicker.setOnImageSetListener(this);
-        imagePicker.pick();
+                            @Override
+                            public void onFailure() {
+                                //Toast.makeText(MainActivity.this,"onFailure",Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .show();
+
+
 ```
 
 
