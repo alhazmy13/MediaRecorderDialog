@@ -1,6 +1,10 @@
 package net.alhazmy13.mediarecorderdialog;
 
+import android.Manifest;
 import android.content.Context;
+
+import net.alhazmy13.gota.Gota;
+import net.alhazmy13.gota.GotaResponse;
 
 /**
  * Created by Alhazmy13 on 12/23/15.
@@ -27,7 +31,14 @@ public class MediaRecorderDialog  {
             return this;
         }
         public MediaRecorderDialog.Builder show(){
-            new SoundDialog(GenralAtteribute.context).show();
+            new Gota(GenralAtteribute.context).checkPermission(new String[]{Manifest.permission.RECORD_AUDIO
+                    ,Manifest.permission.WRITE_EXTERNAL_STORAGE}, new Gota.OnRequestPermissionsBack() {
+                @Override
+                public void onRequestBack(GotaResponse goaResponse) {
+                    new SoundDialog(GenralAtteribute.context).show();
+                }
+            });
+
             return this;
         }
 

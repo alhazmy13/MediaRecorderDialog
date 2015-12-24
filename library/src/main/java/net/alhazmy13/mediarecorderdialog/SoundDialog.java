@@ -59,13 +59,7 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.sound_dialog);
-        new Gota(activity).checkPermission(new String[]{Manifest.permission.RECORD_AUDIO
-                ,Manifest.permission.WRITE_EXTERNAL_STORAGE}, new Gota.OnRequestPermissionsBack() {
-            @Override
-            public void onRequestBack(GotaResponse goaResponse) {
 
-            }
-        });
         initViews();
         runnable = new MyCountDownTimer(this,handler);
         setListeners();
