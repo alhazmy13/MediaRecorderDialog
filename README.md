@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://cloud.githubusercontent.com/assets/4659608/12700283/c3072022-c7ee-11e5-8862-6b73f90c3066.png" >
+</p>
 # Media Recorder Dialog
 ------ 
 Android has a built in microphone through which you can capture audio and store it , or play it in your phone. There are many ways to do that but with this dialog you can do all thats with only one dialog.
