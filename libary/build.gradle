@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/alhzmy13/MediaRecorderDialog'
     gitUrl = 'https://github.com/alhzmy13/MediaRecorderDialog.git'
 
-    libraryVersion = '0.1.1-beta'
+    libraryVersion = '0.1.2-beta'
 
     developerId = 'alhazmy13'
     developerName = 'Abdullah Alhazmy'
