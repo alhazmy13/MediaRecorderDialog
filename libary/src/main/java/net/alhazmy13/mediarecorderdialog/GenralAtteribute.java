@@ -9,7 +9,8 @@ class GenralAtteribute {
     protected static Context context;
     protected static String title="";
     protected static String message="";
-    protected static int outPutFormat;
-    protected static int audioEncoder;
+    protected static MediaRecorderDialog.OutputFormat outPutFormat;
+    protected static MediaRecorderDialog.AudioEncoder audioEncoder;
     protected static OnSaveButtonClickListener onSaveButtonClickListener;
+    public static int length = -1;
 }

@@ -2,9 +2,6 @@
     package="net.alhazmy13.library">
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <application
-        android:supportsRtl="true">
-
-    </application>
+    <application/>
 
 </manifest>

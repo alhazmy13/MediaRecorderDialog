@@ -6,4 +6,6 @@ package net.alhazmy13.mediarecorderdialog;
 interface SoundDialogView {
 
     void updateTimer(String value);
+
+    void stopRecording();
 }

@@ -49,7 +49,8 @@ dependencies {
     compile 'com.skyfishjy.ripplebackground:library:1.0.1'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.daimajia.androidanimations:library:1.1.3@aar'
-    compile 'net.alhazmy13.Gota:libary:1.0.0-beta'
+    compile 'net.alhazmy13.Gota:libary:1.0.2-beta'
+    compile 'com.android.support:appcompat-v7:23.1.1'
 
 
 }

@@ -5,7 +5,7 @@
 ![](https://img.shields.io/badge/Platform-Android-brightgreen.svg)
 ![](https://img.shields.io/badge/Android-CustomView-blue.svg)
 ![](https://img.shields.io/crates/l/rustc-serialize.svg)
-![](https://img.shields.io/badge/version-0.1.1_beta-blue.svg)
+![](https://img.shields.io/badge/version-0.1.2_beta-blue.svg)
 
 ------ 
 Android has a built in microphone through which you can capture audio and store it , or play it in your phone. There are many ways to do that but with this dialog you can do all thats with only one dialog.
@@ -23,7 +23,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 <dependency>
 <groupId>net.alhazmy13.MediaRecorderDialog</groupId>
 <artifactId>libary</artifactId>
-<version>0.1.1-beta</version>
+<version>0.1.2-beta</version>
 </dependency>
 ```
 
@@ -32,7 +32,7 @@ You can report any issue on issues page. **Note: If you speak Arabic, you can su
 ```gradle
 
 dependencies {
-	compile 'net.alhazmy13.MediaRecorderDialog:libary:0.1.1-beta'
+	compile 'net.alhazmy13.MediaRecorderDialog:libary:0.1.2-beta'
 }
 ```
 
@@ -80,10 +80,6 @@ In order to receive the path of file, you will need to implement the `OnSaveButt
 * `setMessage` to change the message  
 ```java
 .setMessage("Press the button")
-```
-* `setTitle` You can change the title of Dialog 
-```java
-.setTitle("Recording,,,")
 ```
 * `setOutputFormat` You can change the Output format by passing the format from  `MediaRecorderDialog.OutputFormat`
 ```java

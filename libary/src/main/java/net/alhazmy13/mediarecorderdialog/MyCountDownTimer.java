@@ -20,6 +20,10 @@ class MyCountDownTimer implements Runnable {
             min++;
             sec = 0;
         }
+        if(GenralAtteribute.length != -1){
+            if(GenralAtteribute.length < sec +(min*60))
+                mView.stopRecording();
+        }
         mView.updateTimer(String.format("%02d", min) + ":" + String.format("%02d", sec));
         handler.postDelayed(this, 1000);
     }

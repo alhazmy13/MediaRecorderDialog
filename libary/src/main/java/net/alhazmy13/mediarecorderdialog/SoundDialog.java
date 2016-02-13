@@ -1,6 +1,5 @@
 package net.alhazmy13.mediarecorderdialog;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -24,8 +23,6 @@ import com.skyfishjy.library.RippleBackground;
 import com.truizlop.fabreveallayout.FABRevealLayout;
 import com.truizlop.fabreveallayout.OnRevealChangeListener;
 
-import net.alhazmy13.gota.Gota;
-import net.alhazmy13.gota.GotaResponse;
 import net.alhazmy13.library.R;
 
 import java.io.IOException;
@@ -41,7 +38,7 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
     private FABRevealLayout fab;
     private RippleBackground rippleBackground;
     private ImageView stopRecording,save,play,stopPlaing;
-    private LinearLayout recrodLayout,playLayout;
+    private LinearLayout recordLayout,playLayout;
     private TextView timer,title,msg;
     private Handler handler = new Handler();
     private AudioManager audioManager;
@@ -65,8 +62,8 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
         setListeners();
         recorder = new MediaRecorder();
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(GenralAtteribute.outPutFormat);
-        recorder.setAudioEncoder(GenralAtteribute.audioEncoder);
+        recorder.setOutputFormat(GenralAtteribute.outPutFormat.getValue());
+        recorder.setAudioEncoder(GenralAtteribute.audioEncoder.getValue());
         path="/sdcard/Music/"+System.currentTimeMillis()+".3gp";
         recorder.setOutputFile(path);
         this.setOnDismissListener(this);
@@ -90,7 +87,7 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
         stopRecording = (ImageView) findViewById(R.id.stopRecording);
         stopPlaing = (ImageView) findViewById(R.id.stop);
         rippleBackground=(RippleBackground)findViewById(R.id.content);
-        recrodLayout = (LinearLayout) findViewById(R.id.recordingLayout);
+        recordLayout = (LinearLayout) findViewById(R.id.recordingLayout);
         playLayout = (LinearLayout) findViewById(R.id.playLayout);
         timer = (TextView) findViewById(R.id.timer);
         msg= (TextView) findViewById(R.id.msg);
@@ -108,22 +105,7 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
     @Override
     public void onClick(View view) {
        if(view == stopRecording){
-            updateViews();
-            rippleBackground.stopRippleAnimation();
-            YoYo.with(Techniques.FadeIn)
-                    .duration(700)
-                    .playOn(playLayout);
-           recorder.stop();
-           mp=MediaPlayer.create(activity, Uri.parse(path));
-           mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-               @Override
-               public void onCompletion(MediaPlayer mediaPlayer) {
-                   handler.removeCallbacks(runnable);
-                   runnable=new MyCountDownTimer(SoundDialog.this,handler);
-                   play.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_play_arrow_black_24dp));
-                   play.setTag(R.drawable.ic_play_arrow_black_24dp);
-               }
-           });
+            stopRecording();
         }else if(view == play){
             if((Integer)play.getTag() ==  R.drawable.ic_play_arrow_black_24dp) {
                 play.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_pause_black_18dp));
@@ -150,7 +132,7 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
     }
 
     private void updateViews() {
-        recrodLayout.setVisibility(View.GONE);
+        recordLayout.setVisibility(View.GONE);
         playLayout.setVisibility(View.VISIBLE);
         timer.setVisibility(View.VISIBLE);
         rippleBackground.setVisibility(View.GONE);
@@ -177,6 +159,28 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
     }
 
     @Override
+    public void stopRecording() {
+        updateViews();
+        recorder.stop();
+        handler.removeCallbacks(runnable);
+        runnable=new MyCountDownTimer(SoundDialog.this,handler);
+        rippleBackground.stopRippleAnimation();
+        YoYo.with(Techniques.FadeIn)
+                .duration(700)
+                .playOn(playLayout);
+        mp=MediaPlayer.create(activity, Uri.parse(path));
+        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                handler.removeCallbacks(runnable);
+                runnable=new MyCountDownTimer(SoundDialog.this,handler);
+                play.setImageDrawable(activity.getResources().getDrawable(R.drawable.ic_play_arrow_black_24dp));
+                play.setTag(R.drawable.ic_play_arrow_black_24dp);
+            }
+        });
+    }
+
+    @Override
     public void onMainViewAppeared(FABRevealLayout fabRevealLayout, View mainView) {
 
     }
@@ -191,6 +195,8 @@ class SoundDialog extends Dialog implements View.OnClickListener,SeekBar.OnSeekB
             e.printStackTrace();
         }
         recorder.start();
+        handler.postDelayed(runnable, 1000);
+
     }
 
 
